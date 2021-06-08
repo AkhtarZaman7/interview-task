@@ -1,7 +1,7 @@
 import React from 'react';
 import PlayerCard from '../../components/PlayerCard';
 import Styled from 'styled-components';
-const ContentContainer = Styled.div``;
+// const ContentContainer = Styled.div``;
 const ContentContainer = Styled.div` 
         display: flex;
         flex-direction: row;
