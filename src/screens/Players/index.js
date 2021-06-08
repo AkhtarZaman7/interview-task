@@ -20,12 +20,15 @@ import {
 function Players() {
   const [displayDetails, setDisplayDetails] = useState(false);
   const [playersData, setPlayersData] = useState([]);
+  const [searchedPlayers, setSearchedPlayers] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [searchString, setSearchString] = useState('');
 
   const fetchData = async () => {
     try {
       const response = await getPlayersData();
       setPlayersData(response.data);
+      setSearchedPlayers(response.data);
     } catch (error) {
       console.log(`error`, error);
     }
@@ -36,13 +39,22 @@ function Players() {
 
   const sortPlayers = (e) => {
     e.key === '1' //ascending
-      ? setPlayersData([
+      ? setSearchedPlayers([
           ...playersData.sort((a, b) => a.real_name.localeCompare(b.real_name)),
         ])
-      : setPlayersData([
+      : setSearchedPlayers([
           //decending
           ...playersData.sort((b, a) => a.real_name.localeCompare(b.real_name)),
         ]);
+  };
+
+  const handleSearch = (e) => {
+    setSearchString(e.target.value);
+    setSearchedPlayers([
+      ...playersData.filter((item) =>
+        item.real_name.toLowerCase().startsWith(e.target.value.toLowerCase())
+      ),
+    ]);
   };
   const sortMenu = (
     <Menu onClick={sortPlayers}>
@@ -60,20 +72,26 @@ function Players() {
         <SelectedPlayer
           displayDetails={displayDetails}
           selectedPlayer={selectedPlayer}
+          setDisplayDetails={setDisplayDetails}
         />
       </PlayerDetails>
+
       <Filters>
         <Dropdown overlay={sortMenu}>
           <Button
-            style={{ width: 250, height: 40, border: '1px solid lightGrey' }}
+            style={{ width: 320, height: 40, border: '1px solid lightGrey' }}
           >
             Sort The Players <DownOutlined />
           </Button>
         </Dropdown>
-        <Search placeholder={'search'} />
+        <Search
+          placeholder={'search'}
+          value={searchString}
+          onChange={handleSearch}
+        />
       </Filters>
       <ContentContainer key={playersData}>
-        {playersData.map((item, index) => {
+        {searchedPlayers.map((item, index) => {
           return (
             <PlayerCard
               key={item.id}

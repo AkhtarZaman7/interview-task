@@ -14,6 +14,9 @@ const Container = Styled.div`
   &:hover {
     box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.5);
   }
+  @media (max-width: 768px){
+    width: 100%;
+  }
 `;
 const BgImageHolder = Styled.div`
     background-color:white;

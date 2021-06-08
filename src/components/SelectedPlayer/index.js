@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Assets,
   RealName,
@@ -6,11 +6,25 @@ import {
   PlayerData,
   PlayerImage,
   Container,
-  SubmitButton,
-  BtnText,
+  ButtomHolder,
 } from './elements';
+import { Alert, Button } from 'antd';
 
-function SelectedPlayer({ displayDetails, selectedPlayer }) {
+function SelectedPlayer({ displayDetails, selectedPlayer, setDisplayDetails }) {
+  const [loading, setLoading] = useState(false);
+  const [submitText, setSubmitText] = useState('Submit');
+
+  const onPressSubmit = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitText('Submitted');
+      setTimeout(() => {
+        setDisplayDetails(false);
+        setSubmitText('Submit');
+      }, 1000);
+    }, 2000);
+  };
   return (
     <Container displayDetails={displayDetails}>
       <PlayerImage
@@ -25,9 +39,23 @@ function SelectedPlayer({ displayDetails, selectedPlayer }) {
           @{selectedPlayer?.player_name}
         </PlayerName>
         <Assets displayDetails={displayDetails}>{selectedPlayer?.asset}</Assets>
-        <SubmitButton displayDetails={displayDetails}>
-          <BtnText>Submit Player </BtnText>
-        </SubmitButton>
+        <ButtomHolder>
+          <Button
+            type="primary"
+            size="large"
+            loading={loading}
+            style={{
+              backgroundColor: 'black',
+              width: 250,
+              display: displayDetails ? 'flex' : 'none',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            onClick={onPressSubmit}
+          >
+            {submitText}
+          </Button>
+        </ButtomHolder>
       </PlayerData>
     </Container>
   );

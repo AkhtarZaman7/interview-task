@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useWindowDimensions from '../../utils';
 import {
   Assets,
@@ -19,9 +19,20 @@ function PlayerCard({
   selectedPlayer,
 }) {
   const { width } = useWindowDimensions();
+  const [divider, setDivider] = useState(3);
+  useEffect(() => {
+    if (width < 1070 && width > 769) {
+      setDivider(2);
+    } else if (width < 769) {
+      setDivider(1);
+    } else {
+      setDivider(3);
+    }
+  }, [width]);
+
   return (
     <Container
-      width={width / 3 - 130 + 'px'}
+      width={width / divider - 130 + 'px'}
       onClick={() => {
         if (player === selectedPlayer) {
           setDisplayDetails(!displayDetails);

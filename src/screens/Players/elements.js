@@ -4,6 +4,10 @@ const Container = Styled.div`
     min-height:100vh;
     padding-left: 100px;
     padding-right:100px;
+    @media (max-width: 768px){
+        padding-left: 20px;
+    padding-right:20px;
+    }
 `;
 const ContentContainer = Styled.div` 
     display: flex;
@@ -32,10 +36,14 @@ const Filters = Styled.div`
     flex-direction:row;
     margin-left:10px; 
     margin-top:30px;
+    @media (max-width: 768px){
+        flex-direction:column;
+
+    }
 `;
 
 const Search = Styled.input`
-    width:250px;
+    width:320px;
     height: 40px;
     border-radius: 5px;
     margin-left: 20px;
@@ -44,6 +52,10 @@ const Search = Styled.input`
     padding-left:10px;
     &:hover{
         border: 1px solid black;
+    }
+    @media (max-width: 768px){
+        margin-top:20px;
+        margin-left:0px;
     }
 `;
 

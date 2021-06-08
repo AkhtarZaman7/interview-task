@@ -7,6 +7,9 @@ const Container = Styled.div`
    padding:20px;
    flex-direction:row;
    transition: display 1s;
+   @media (max-width: 768px){
+    flex-direction:column;
+   }
    
 `;
 const PlayerImage = Styled.img`
@@ -14,12 +17,20 @@ const PlayerImage = Styled.img`
   width: 250px;
   border-radius: 10px;
   transition: height 1s;
+  @media (max-width: 768px){
+    height: ${(props) => (props.displayDetails ? '100px' : '0px')};
+    width: 100%;
+  }
 
 `;
 
 const PlayerData = Styled.div`
   margin-left:30px;
   width: 70%;
+  @media (max-width: 768px){
+    width: 100%;
+
+  }
 `;
 const RealName = Styled.p`
     ${truncate('80%')}
@@ -29,6 +40,9 @@ const RealName = Styled.p`
     margin:0px ;
     color:black;
     cursor: pointer;
+    @media (max-width: 768px){
+        font-size:${(props) => (props.displayDetails ? '30px' : 0)};;
+    }
 
 `;
 const PlayerName = Styled.p`
@@ -40,6 +54,9 @@ const PlayerName = Styled.p`
     color: grey;
     ${truncate('80%')}
     cursor: pointer;
+    @media (max-width: 768px){
+        font-size:${(props) => (props.displayDetails ? '20px' : 0)};;
+    }
 
 
 `;
@@ -50,6 +67,9 @@ const Assets = Styled.p`
     color:black;
     ${truncate('80%')}
     cursor: pointer;
+    @media (max-width: 768px){
+        font-size:${(props) => (props.displayDetails ? '15px' : 0)};;
+    }
 `;
 const SubmitButton = Styled.div`
     width:250px;
@@ -72,6 +92,14 @@ const BtnText = Styled.p`
     margin:0px;
     
 `;
+const ButtomHolder = Styled.div`
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    width: 300px;
+
+`;
 export {
   Assets,
   RealName,
@@ -81,4 +109,5 @@ export {
   Container,
   SubmitButton,
   BtnText,
+  ButtomHolder,
 };
