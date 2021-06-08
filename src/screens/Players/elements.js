@@ -4,9 +4,12 @@ const Container = Styled.div`
     min-height:100vh;
     padding-left: 100px;
     padding-right:100px;
+    background-color: #F6F6F6;
+    padding-top:50px;
     @media (max-width: 768px){
         padding-left: 20px;
     padding-right:20px;
+
     }
 `;
 const ContentContainer = Styled.div` 
