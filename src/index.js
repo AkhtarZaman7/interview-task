@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Players from './screens/Players';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Players />
   </React.StrictMode>,
   document.getElementById('root')
 );
