@@ -8,7 +8,7 @@ import {
   Container,
   ButtomHolder,
 } from './elements';
-import { Alert, Button } from 'antd';
+import { Button } from 'antd';
 
 function SelectedPlayer({ displayDetails, selectedPlayer, setDisplayDetails }) {
   const [loading, setLoading] = useState(false);
