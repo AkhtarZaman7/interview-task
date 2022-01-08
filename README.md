@@ -1,5 +1,10 @@
 # Players Card Game
+clone repo: ` git clone https://github.com/AkhtarZaman7/interview-task`
 
+install packages: ` yarn install`
+
+Run: ` yarn start`
+ 
 ## The Card Game
 # The Story
 In an agency far away a PO had a product vision.
